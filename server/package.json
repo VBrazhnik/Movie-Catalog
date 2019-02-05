@@ -1,0 +1,44 @@
+{
+	"name": "movie-catalog",
+	"version": "1.0.0",
+	"description": "Movie Catalog",
+	"main": "server.js",
+	"scripts": {
+		"client-start": "npm start --prefix ../client",
+		"server-start": "node server.js",
+		"server-start-dev": "nodemon server.js",
+		"start": "concurrently \"npm run server-start\" \"npm run client-start\"",
+		"test": "mocha test/movies.js --exit"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VBrazhnik/Movie-Catalog.git"
+	},
+	"keywords": [
+		"Movie Catalog",
+		"MERN stack"
+	],
+	"author": "VBrazhnik",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/VBrazhnik/Movie-Catalog/issues"
+	},
+	"homepage": "https://github.com/VBrazhnik/Movie-Catalog",
+	"dependencies": {
+		"concurrently": "^4.1.0",
+		"config": "^3.0.1",
+		"debug": "^4.1.1",
+		"express": "^4.16.4",
+		"express-fileupload": "^1.1.1-alpha.1",
+		"helmet": "^3.15.0",
+		"joi": "^14.3.1",
+		"mongoose": "^5.4.9",
+		"morgan": "^1.9.1",
+		"nodemon": "^1.18.9"
+	},
+	"devDependencies": {
+		"chai": "^4.2.0",
+		"chai-http": "^4.2.1",
+		"mocha": "^5.2.0"
+	}
+}

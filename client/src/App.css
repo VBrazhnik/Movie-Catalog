@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese');
+
+body {
+	font-family: 'Roboto', sans-serif !important;
+	background-color: #EAEAEA;
+}
+
+* {
+	border-radius: 0 !important;
+}
+
+.bg-dark {
+	background-color: #333 !important;
+}
+
+.btn-dark {
+	background-color: #333 !important;
+}
+
+.btn-dark:hover {
+	filter: brightness(1.2);
+}
+
+.btn-outline-dark:hover {
+	background-color: #333 !important;
+}
+
+.navigation-link {
+	cursor: pointer;
+}
+
+/*
+** Card
+*/
+
+.card {
+	background-color: transparent;
+	border: 0;
+}
+
+.card-title{
+	overflow:hidden; 
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.card-text{
+	word-wrap: break-word;
+}
