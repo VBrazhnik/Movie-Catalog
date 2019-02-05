@@ -10,7 +10,10 @@ import {
 	Form,
 	Input,
 	InputGroup,
-	InputGroupAddon
+	InputGroupAddon,
+	Modal,
+	ModalHeader,
+	ModalBody
 } from 'reactstrap';
 
 import {
@@ -28,7 +31,15 @@ import 'font-awesome/css/font-awesome.min.css';
 class MovieList extends Component {
 	state = {
 		query: '',
-		type: 'Title'
+		type: 'Title',
+		modal: false,
+		movie: null
+	};
+
+	toggle = () => {
+		this.setState({
+			modal: !this.state.modal
+		});
 	};
 
 	componentDidMount() {
@@ -40,8 +51,10 @@ class MovieList extends Component {
 	};
 
 	onViewClick = (movie) => {
-		alert(`Title: ${movie.title}\nYear: ${movie.year}\n` +
-			`Format: ${movie.format}\nStars:\n${movie.stars.map((star) => ('- ' + star)).join('\n')}`);
+		this.setState({
+			modal: true,
+			movie: movie
+		});
 	};
 
 	search = (type, query) => {
@@ -82,7 +95,9 @@ class MovieList extends Component {
 
 		return (
 			<div>
-				<Form className="mt-4 mb-4" onSubmit={ this.handleSubmit }>
+				<Form
+					className="mt-4 mb-4"
+					onSubmit={ this.handleSubmit }>
 					<InputGroup>
 						<InputGroupAddon
 							addonType="prepend">
@@ -102,40 +117,80 @@ class MovieList extends Component {
 					</InputGroup>
 				</Form>
 
-			<Container
-				className="d-flex flex-row flex-wrap mt-3">
-				{movies.map((movie) => (
-					<Card
-						className="col-md-3 mb-3"
-						key={ movie._id }>
-						<CardImg top width="100%" src="/poster.svg" alt="Card image cap"/>
-						<CardBody>
-							<CardTitle>
-								{ movie.title }
-							</CardTitle>
-							<CardSubtitle
-								className="text-secondary">
-								{ movie.year }
-							</CardSubtitle>
-							<div
-								style={{ zIndex: 2, position: 'absolute', right: '1.5rem', top: '0.5rem'}}>
-								<Button
-									color="light"
-									size="sm"
-									className="fa fa-eye"
-									onClick={ this.onViewClick.bind(this, movie) }
-									block/>
-								<Button
-									color="light"
-									size="sm"
-									className="fa fa-trash"
-									onClick={ this.onDeleteClick.bind(this, movie._id) }
-									block/>
-							</div>
-						</CardBody>
-					</Card>
-					))}
-			</Container>
+				<Container
+					className="d-flex flex-row flex-wrap mt-3">
+					{ movies.map((movie) => (
+						<Card
+							className="col-md-3 mb-3"
+							key={ movie._id }>
+							<CardImg
+								top
+								width="100%"
+								src="/poster.svg"
+								alt="Card image cap"/>
+							<CardBody>
+								<CardTitle>
+									{ movie.title }
+								</CardTitle>
+								<CardSubtitle
+									className="text-secondary">
+									{ movie.year }
+								</CardSubtitle>
+								<div
+									style={{ zIndex: 2,
+										position: 'absolute',
+										right: '1.5rem',
+										top: '0.5rem'}}>
+									<Button
+										color="light"
+										size="sm"
+										className="fa fa-eye button-rounded"
+										onClick={ this.onViewClick.bind(this, movie) }
+										block/>
+									<Button
+										color="light"
+										size="sm"
+										className="fa fa-trash button-rounded"
+										onClick={ this.onDeleteClick.bind(this, movie._id) }
+										block/>
+								</div>
+							</CardBody>
+						</Card>
+						)) }
+				</Container>
+
+				{
+					this.state.modal && this.state.movie &&
+					<Modal
+						isOpen={ this.state.modal }
+						toggle={ this.toggle }>
+						<ModalHeader
+							toggle={ this.toggle }>
+							{ this.state.movie.title }
+						</ModalHeader>
+						<ModalBody>
+							<p>
+								<span className="font-weight-bold">Year: </span>
+								{ this.state.movie.year }
+							</p>
+							<p>
+								<span className="font-weight-bold">Format: </span>
+								{ this.state.movie.format }
+							</p>
+							<p className="font-weight-bold">
+								Stars:
+							</p>
+							<ul>
+							{ this.state.movie.stars.map((star) => (
+									<li>
+										{ star }
+									</li>
+								)) }
+							</ul>
+						</ModalBody>
+					</Modal>
+				}
+
 		</div>
 		)
 	}

@@ -112,7 +112,8 @@ class MovieModal extends Component {
 						Add Movie
 					</ModalHeader>
 					<ModalBody>
-						<Form onSubmit={ this.onSubmit }>
+						<Form
+							onSubmit={ this.onSubmit }>
 							<FormGroup>
 								<Input
 									id="title"
@@ -149,8 +150,7 @@ class MovieModal extends Component {
 									className="mt-3">
 									Stars
 								</Label>
-								{
-									this.state.stars.map((star, index) => {
+								{ this.state.stars.map((star, index) => {
 										return (
 											<div
 												key={ index }
@@ -173,8 +173,7 @@ class MovieModal extends Component {
 												</InputGroup>
 											</div>
 										)
-									})
-								}
+									}) }
 								<Button
 									color="dark"
 									outline
