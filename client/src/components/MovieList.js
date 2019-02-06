@@ -139,18 +139,18 @@ class MovieList extends Component {
 								<div
 									style={{ zIndex: 2,
 										position: 'absolute',
-										right: '1.5rem',
-										top: '0.5rem'}}>
+										right: '0.5rem',
+										top: '0.75rem'}}>
 									<Button
-										color="light"
+										color="dark"
 										size="sm"
-										className="fa fa-eye button-rounded"
+										className="fa fa-eye"
 										onClick={ this.onViewClick.bind(this, movie) }
 										block/>
 									<Button
-										color="light"
+										color="dark"
 										size="sm"
-										className="fa fa-trash button-rounded"
+										className="fa fa-trash"
 										onClick={ this.onDeleteClick.bind(this, movie._id) }
 										block/>
 								</div>
