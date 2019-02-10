@@ -1,5 +1,7 @@
 const config = require('config');
+
 const log = require('debug')('app:log');
+
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -17,7 +19,7 @@ mongoose.connect(config.get('database.uri'), { useNewUrlParser: true })
 app.use(helmet());
 
 app.use(express.json());
-app.use(express.urlencoded( { extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 
 app.use(morgan('tiny', { stream: { write: msg => log(msg) } }));
