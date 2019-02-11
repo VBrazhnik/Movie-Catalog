@@ -15,7 +15,7 @@ import {
 import { uploadMovies } from '../actions/movieActions';
 import { connect } from 'react-redux';
 
-class FileUpload extends Component {
+class FileUploadModal extends Component {
 	state = {
 		modal: false,
 		file: null,
@@ -34,14 +34,14 @@ class FileUpload extends Component {
 		});
 	};
 
-	handleFile = event => {
+	onFileSelect = event => {
 		this.setState({
 			file: event.target.files[0],
 			label: event.target.files[0].name
 		})
 	};
 
-	handleUpload = () => {
+	onFileUpload = () => {
 		if (this.state.file)
 		{
 			const data = new FormData();
@@ -90,11 +90,11 @@ class FileUpload extends Component {
 									type="file"
 									name="movies"
 									id="moviesFileUpload"
-									onChange={ this.handleFile }
+									onChange={ this.onFileSelect }
 									label={ this.state.label }/>
 								<Button
 									className="mt-3"
-									onClick={ this.handleUpload }
+									onClick={ this.onFileUpload }
 									color="dark"
 									block>
 									Upload
@@ -121,4 +121,4 @@ const mapStateToProps = state => ({
 export default connect(
 	mapStateToProps,
 	{ uploadMovies }
-)(FileUpload);
+)(FileUploadModal);

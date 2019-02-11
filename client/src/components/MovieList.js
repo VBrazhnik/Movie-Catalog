@@ -111,7 +111,7 @@ class MovieList extends Component {
 						</InputGroupAddon>
 						<Input
 							value={ this.state.query }
-							placeholder={ (this.state.type === 'Title') ? 'The Girl with the Dragon Tattoo' : 'Daniel Craig'}
+							placeholder={ (this.state.type === 'Title') ? 'The Girl with the Dragon Tattoo' : 'Daniel Craig' }
 							name="search"
 							onChange={ this.handleInputChange } />
 					</InputGroup>
@@ -140,7 +140,7 @@ class MovieList extends Component {
 									style={{ zIndex: 2,
 										position: 'absolute',
 										right: '0.5rem',
-										top: '0.75rem'}}>
+										top: '0.75rem' }}>
 									<Button
 										color="dark"
 										size="sm"
@@ -181,8 +181,8 @@ class MovieList extends Component {
 								Stars:
 							</p>
 							<ul>
-							{ this.state.movie.stars.map((star) => (
-									<li>
+							{ this.state.movie.stars.map((star, index) => (
+									<li key={ index }>
 										{ star }
 									</li>
 								)) }

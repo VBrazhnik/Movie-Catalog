@@ -9,8 +9,8 @@ import {
 	Collapse
 } from 'reactstrap';
 
-import MovieModal from './MovieModal';
-import FileUpload from './FileUpload';
+import AddMovieModal from './AddMovieModal';
+import FileUploadModal from './FileUploadModal';
 
 class AppNavBar extends Component {
 	state = {
@@ -36,18 +36,18 @@ class AppNavBar extends Component {
 						Movie Catalog
 					</NavbarBrand>
 					<NavbarToggler
-						onClick={this.toggle}/>
+						onClick={ this.toggle }/>
 					<Collapse
-						isOpen={this.state.isOpen}
+						isOpen={ this.state.isOpen }
 						navbar>
 						<Nav
 							className="ml-auto"
 							navbar>
 							<NavItem>
-								<MovieModal/>
+								<AddMovieModal/>
 							</NavItem>
 							<NavItem>
-								<FileUpload/>
+								<FileUploadModal/>
 							</NavItem>
 						</Nav>
 					</Collapse>

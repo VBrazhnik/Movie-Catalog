@@ -17,7 +17,7 @@ import {
 import { connect } from 'react-redux';
 import { addMovie } from '../actions/movieActions';
 
-class MovieModal extends Component {
+class AddMovieModal extends Component {
 	state = {
 		modal: false,
 		title: '',
@@ -29,6 +29,9 @@ class MovieModal extends Component {
 	toggle = () => {
 		this.setState({
 			modal: !this.state.modal,
+			title: '',
+			format: 'VHS',
+			year: 1800,
 			stars: ['']
 		});
 	};
@@ -122,7 +125,7 @@ class MovieModal extends Component {
 									required
 									maxLength="100"
 									placeholder="Title"
-									onChange={this.onTitleChange}/>
+									onChange={ this.onTitleChange }/>
 								<Input
 									id="year"
 									name="year"
@@ -132,7 +135,7 @@ class MovieModal extends Component {
 									max="3000"
 									placeholder="Year"
 									className="mt-3"
-									onChange={this.onYearChange}/>
+									onChange={ this.onYearChange }/>
 								<Label
 									for="format"
 									className="mt-3">
@@ -204,4 +207,4 @@ const mapStateToProps = state => ({
 export default connect(
 	mapStateToProps,
 	{ addMovie }
-)(MovieModal);
+)(AddMovieModal);
